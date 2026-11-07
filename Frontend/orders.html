@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexora | My Orders</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">Nexora<span>.</span></h1>
+
+            <div class="nav-actions">
+                <a href="index.html" class="login-button">
+                    Continue Shopping
+                </a>
+
+                <button class="cart-button" onclick="logout()">
+                    Logout
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="orders-hero">
+        <h1>My Orders</h1>
+        <p>Track your purchases and view your order history.</p>
+    </section>
+
+    <main class="orders-container">
+        <div class="orders-heading">
+            <h2>Your Order History</h2>
+            <p id="orderCount">Loading your orders...</p>
+        </div>
+
+        <div id="ordersList">
+            <p class="loading-message">Loading orders...</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Nexora. All Rights Reserved.</p>
+        <p>Developed as a CodeAlpha Internship Project.</p>
+    </footer>
+
+    <script src="orders.js"></script>
+</body>
+</html>

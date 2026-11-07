@@ -1,0 +1,721 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f8fc;
+    color: #222;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 7%;
+    background: white;
+    box-shadow: 0 2px 10px #ddd;
+    gap: 20px;
+}
+
+.logo {
+    color: #24245c;
+}
+
+.logo span {
+    color: #ff7043;
+}
+
+#searchInput {
+    width: 40%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 7px;
+    padding: 12px 18px;
+}
+
+.cart-button {
+    background: #24245c;
+    color: white;
+}
+
+.hero {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    padding: 50px 8%;
+    color: white;
+    background: linear-gradient(120deg, #24245c, #6868bd);
+}
+
+.hero h2 {
+    font-size: 38px;
+    margin: 15px 0;
+}
+
+.tagline {
+    color: #ffb18f;
+    font-weight: bold;
+}
+
+.shop-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 13px 25px;
+    background: #ff7043;
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+}
+
+main {
+    padding: 50px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #ddd;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product-card h3 {
+    margin: 15px 0 8px;
+}
+
+.price {
+    color: #ff7043;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.add-button {
+    background: #24245c;
+    color: white;
+    width: 100%;
+}
+
+.cart-section {
+    display: none;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px #ccc;
+}
+.cart-section.active {
+    display: block;
+}
+
+.cart-section h2 {
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+    gap: 10px;
+}
+
+.cart-item button {
+    background: #ffe2dc;
+    color: #b52e16;
+}
+
+#cartTotal {
+    margin: 20px 0;
+}
+
+.checkout-button {
+    background: #ff7043;
+    color: white;
+}
+
+.close-button {
+    background: #ddd;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #24245c;
+    color: white;
+    margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    #searchInput {
+        width: 100%;
+        order: 3;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+}
+
+.cart-section.active {
+    display: block;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.add-to-cart-btn {
+    background: #24245c;
+    color: white;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.remove-from-cart {
+    background: #ffe2dc;
+    color: #b52e16;
+}
+
+
+/* Product Details Modal */
+.product-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.product-modal.active {
+    display: flex;
+}
+
+.product-modal-content {
+    background: white;
+    width: 100%;
+    max-width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 25px;
+    border-radius: 15px;
+    position: relative;
+    text-align: center;
+}
+
+.product-modal-content img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.product-modal-content h2 {
+    margin: 10px 0;
+    color: #24245c;
+}
+
+.product-modal-content h3 {
+    color: #ff7043;
+    margin: 12px 0;
+}
+
+.product-modal-content p {
+    margin: 10px 0;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ffe2dc;
+    font-size: 24px;
+    padding: 5px 12px;
+}
+
+#detailAddButton {
+    width: 100%;
+    margin-top: 15px;
+    background: #24245c;
+    color: white;
+}
+
+
+/* Login and Registration Page */
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(120deg, #24245c, #6868bd);
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 420px;
+    padding: 35px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.auth-box .logo {
+    margin-bottom: 25px;
+    color: #24245c;
+}
+
+.auth-box .logo span {
+    color: #ff7043;
+}
+
+.auth-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.auth-tabs button {
+    flex: 1;
+    background: #eee;
+    color: #24245c;
+    font-weight: bold;
+}
+
+.auth-tabs button.active {
+    background: #24245c;
+    color: white;
+}
+
+.auth-box form h2 {
+    margin-bottom: 10px;
+    color: #24245c;
+}
+
+.auth-box form p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.auth-box form input {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+.auth-box form button {
+    width: 100%;
+    background: #ff7043;
+    color: white;
+    font-weight: bold;
+}
+
+.auth-box form button:hover {
+    background: #e95d32;
+}
+
+#authMessage {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #24245c;
+    text-decoration: none;
+}
+
+
+/* Navbar Action Buttons */
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.login-button {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #fff;
+    color: #24245c;
+    border: 2px solid #24245c;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.login-button:hover {
+    background: #24245c;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.cart-button {
+    background: #ff7043;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.cart-button:hover {
+    background: #e95d32;
+    transform: translateY(-2px);
+}
+
+/* Mobile Navbar */
+@media (max-width: 600px) {
+    .nav-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .login-button,
+    .cart-button {
+        flex: 1;
+        text-align: center;
+    }
+}
+
+
+/* ============================= */
+/* MY ORDERS PAGE */
+/* ============================= */
+
+.orders-hero {
+    background: linear-gradient(120deg, #24245c, #6868bd);
+    color: white;
+    text-align: center;
+    padding: 55px 20px;
+}
+
+.orders-hero h1 {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.orders-hero p {
+    color: #e0e0ff;
+    font-size: 16px;
+}
+
+.orders-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    min-height: 350px;
+}
+
+.orders-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.orders-heading h2 {
+    color: #24245c;
+    font-size: 25px;
+}
+
+#orderCount {
+    color: #777;
+    font-size: 14px;
+}
+
+.order-card {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eee;
+}
+
+.order-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #eee;
+}
+
+.order-top h3 {
+    color: #24245c;
+    margin-bottom: 7px;
+}
+
+.order-date {
+    color: #888;
+    font-size: 13px;
+}
+
+.order-status {
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    background: #fff2d6;
+    color: #a36a00;
+}
+
+.order-products {
+    padding: 20px 0;
+}
+
+.order-product {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.order-product img {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 9px;
+    background: #f5f5f5;
+}
+
+.order-product-info {
+    flex: 1;
+}
+
+.order-product-info h4 {
+    color: #24245c;
+    margin-bottom: 7px;
+}
+
+.order-product-info p {
+    color: #777;
+    font-size: 14px;
+}
+
+.order-product-price {
+    font-weight: bold;
+    color: #ff7043;
+}
+
+.order-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 18px;
+    border-top: 1px solid #eee;
+}
+
+.shipping-info {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 65%;
+    overflow-wrap: anywhere;
+}
+
+.order-total {
+    text-align: right;
+}
+
+.order-total p {
+    color: #777;
+    margin-bottom: 7px;
+}
+
+.order-total h3 {
+    color: #ff7043;
+    font-size: 24px;
+}
+
+.loading-message,
+.empty-orders {
+    text-align: center;
+    padding: 50px 15px;
+    color: #777;
+    background: white;
+    border-radius: 12px;
+}
+
+@media (max-width: 600px) {
+    .orders-hero h1 {
+        font-size: 28px;
+    }
+
+    .order-card {
+        padding: 17px;
+    }
+
+    .order-product {
+        flex-wrap: wrap;
+    }
+
+    .shipping-info {
+        max-width: 100%;
+    }
+
+    .order-bottom {
+        flex-direction: column;
+    }
+
+    .order-total {
+        text-align: left;
+    }
+}
+
+
+/* ===== NEXORA PREMIUM VISUAL UPGRADE ===== */
+
+:root {
+    --nexora-dark: #17152F;
+    --nexora-purple: #635BDB;
+    --nexora-cyan: #38DDE5;
+    --nexora-glow: rgba(56, 221, 229, 0.25);
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Modern navbar */
+.navbar {
+    background: linear-gradient(110deg, #17152F, #29245A);
+    box-shadow: 0 5px 25px rgba(20, 20, 60, 0.2);
+}
+
+.logo span {
+    color: var(--nexora-cyan);
+}
+
+/* Premium hero */
+.hero {
+    background:
+        radial-gradient(circle at 85% 20%, rgba(56,221,229,0.22), transparent 30%),
+        linear-gradient(120deg, #17152F, #5146A8);
+    color: white;
+}
+
+.hero h1 {
+    text-shadow: 0 3px 20px rgba(56,221,229,0.2);
+}
+
+/* Product cards */
+.product-card {
+    border: 1px solid #eeeeF5;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 30px var(--nexora-glow);
+}
+
+/* Product buttons */
+.add-to-cart-btn {
+    background: linear-gradient(100deg, #635BDB, #29245A);
+    border: none;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background: linear-gradient(100deg, #29245A, #635BDB);
+    transform: translateY(-2px);
+}
+
+/* Cart button */
+.cart-button {
+    background: linear-gradient(100deg, #38DDE5, #635BDB);
+    color: #17152F;
+    border: none;
+}
+
+/* Footer */
+footer {
+    background: #17152F;
+    color: #E4E5FF;
+}
+
+/* Selection color */
+::selection {
+    background: #38DDE5;
+    color: #17152F;
+}
+
+/* NEXORA LOGO VISIBILITY FIX */
+
+.logo {
+    color: #FFFFFF !important;
+    font-size: 32px !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 0 12px rgba(56, 221, 229, 0.35);
+}
+
+.logo span {
+    color: #38DDE5 !important;
+    font-size: 38px;
+    text-shadow: 0 0 15px #38DDE5;
+}
